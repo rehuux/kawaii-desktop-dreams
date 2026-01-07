@@ -13,7 +13,27 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        varela: ['Varela Round', 'sans-serif'],
+        pixel: ['Pixelify Sans', 'cursive'],
+      },
       colors: {
+        kawaii: {
+          pink: "hsl(var(--kawaii-pink))",
+          purple: "hsl(var(--kawaii-purple))",
+          lavender: "hsl(var(--kawaii-lavender))",
+          mint: "hsl(var(--kawaii-mint))",
+          peach: "hsl(var(--kawaii-peach))",
+          yellow: "hsl(var(--kawaii-yellow))",
+        },
+        glass: {
+          bg: "hsl(var(--glass-bg))",
+          border: "hsl(var(--glass-border))",
+        },
+        terminal: {
+          bg: "hsl(var(--terminal-bg))",
+          text: "hsl(var(--terminal-text))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -80,10 +100,36 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "fade-out": {
+          "0%": { opacity: "1", transform: "scale(1)" },
+          "100%": { opacity: "0", transform: "scale(0.95)" },
+        },
+        "slide-in": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "slide-out": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        "bounce-in": {
+          "0%": { transform: "scale(0)", opacity: "0" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.3s ease-out forwards",
+        "fade-out": "fade-out 0.3s ease-out forwards",
+        "slide-in": "slide-in 0.3s ease-out forwards",
+        "slide-out": "slide-out 0.3s ease-out forwards",
+        "bounce-in": "bounce-in 0.4s ease-out forwards",
       },
     },
   },
