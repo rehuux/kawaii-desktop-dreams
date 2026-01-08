@@ -39,8 +39,7 @@ const LetterApp = () => {
           </p>
           
           <p className="text-right mt-8">
-            Always wishing you the best,
-            — Rehan,<br />
+            Always wishing you the best,<br />
             <span className="font-pixel text-primary">~ Rehan 🎀</span>
           </p>
         </div>
