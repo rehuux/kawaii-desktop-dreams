@@ -1,7 +1,7 @@
 const LetterApp = () => {
   return (
     <div className="h-full flex flex-col">
-      <h2 className="font-pixel text-xl text-primary mb-4">💌 A Letter For You</h2>
+      <h2 className="font-pixel text-xl text-primary mb-4">A Letter For You</h2>
       
       <div className="flex-1 paper-note rounded-lg p-6 overflow-auto kawaii-scrollbar shadow-inner">
         <div className="max-w-md mx-auto space-y-4 text-foreground leading-relaxed">
