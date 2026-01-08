@@ -3,6 +3,7 @@ import VideoBackground from '@/components/desktop/VideoBackground';
 import Sidebar from '@/components/desktop/Sidebar';
 import Window from '@/components/desktop/Window';
 import Taskbar from '@/components/desktop/Taskbar';
+import MusicControl from '@/components/desktop/MusicControl';
 import PhotosApp from '@/components/apps/PhotosApp';
 import VideoApp from '@/components/apps/VideoApp';
 import LetterApp from '@/components/apps/LetterApp';
@@ -134,6 +135,8 @@ const Index = () => {
       {/* Video Background */}
       <VideoBackground />
 
+      {/* Background Music Control */}
+      <MusicControl />
       {/* Sidebar */}
       <Sidebar
         onOpenApp={openApp}
