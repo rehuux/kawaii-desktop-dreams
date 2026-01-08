@@ -8,40 +8,46 @@ const LetterApp = () => {
           <p className="text-lg">Dear iram,</p>
           
           <p>
-            Welcome to my little corner of the internet! ✨
+            I don’t know if you’ll ever read this,
+            but I wanted these words to exist somewhere — honestly, quietly.
           </p>
           
           <p>
-            I created this space to share a piece of my world with you. 
-            Whether you stumbled upon this page by accident or came here 
-            intentionally, I'm so happy you're here! 💖
+            You were never just a chapter of my life.
+            You were a whole feeling, a season that changed me 
+            in ways I still can’t fully explain.
           </p>
           
           <p>
-            This kawaii OS is a reflection of my love for cute aesthetics, 
-            pastel colors, and nostalgic computer vibes. I hope it brings 
-            a smile to your face and maybe even a bit of joy to your day! 🌸
+            I know our paths are different now.
+            I know your heart belongs to another journey, 
+            and I respect that more than you’ll ever know.
+            Loving someone also means knowing when to step back 
+            and let them be happy — even if that happiness isn’t with you.
           </p>
           
           <p>
-            Feel free to explore all the little apps I've created. Each one 
-            holds something special - from my favorite photos to fun games 
-            and music that makes me happy.
+            I won’t pretend that I stopped caring. Some feelings don’t leave,
+            they only learn how to stay silent And mine will always wish you peace,
+            love, and a life that feels gentle to you.
           </p>
           
           <p>
-            Thank you for taking the time to visit. You're amazing! ⭐
+            Wherever life takes you, I hope it treats you kindly.
+            And if you ever think of me, I hope it’s with a small 
+            smile not sadness.
           </p>
           
           <p className="text-right mt-8">
-            With love and sparkles,<br />
+            Always wishing you the best,
+            — Rehan,<br />
             <span className="font-pixel text-primary">~ Rehan 🎀</span>
           </p>
         </div>
       </div>
       
       <p className="text-center text-muted-foreground text-xs mt-4">
-        Written with 💝 just for you
+        Written with love, just for you iram
       </p>
     </div>
   );
