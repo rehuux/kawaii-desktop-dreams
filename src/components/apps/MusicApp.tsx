@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Music } from 'lucide-react';
 
 const playlist = [
-  { id: 1, title: 'Dreamy Clouds', artist: 'Lo-Fi Beats', src: '/music/song1.mp3' },
+  { id: 1, title: 'My soul is your', artist: 'Arabic Beats', src: '/music/song1.mp3' },
   { id: 2, title: 'Cherry Blossom', artist: 'Kawaii Pop', src: '/music/song2.mp3' },
   { id: 3, title: 'Starlight Melody', artist: 'Chillwave', src: '/music/song3.mp3' },
   { id: 4, title: 'Cotton Candy Sky', artist: 'Synth Dreams', src: '/music/song4.mp3' },
