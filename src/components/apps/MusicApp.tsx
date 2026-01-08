@@ -2,78 +2,106 @@ import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Music } from 'lucide-react';
 
 const playlist = [
-  { id: 1, title: 'Dreamy Clouds', artist: 'Lo-Fi Beats', duration: '3:24' },
-  { id: 2, title: 'Cherry Blossom', artist: 'Kawaii Pop', duration: '2:58' },
-  { id: 3, title: 'Starlight Melody', artist: 'Chillwave', duration: '4:12' },
-  { id: 4, title: 'Cotton Candy Sky', artist: 'Synth Dreams', duration: '3:45' },
-  { id: 5, title: 'Moonlit Garden', artist: 'Ambient Nights', duration: '5:01' },
+  { id: 1, title: 'Dreamy Clouds', artist: 'Lo-Fi Beats', src: '/music/song1.mp3' },
+  { id: 2, title: 'Cherry Blossom', artist: 'Kawaii Pop', src: '/music/song2.mp3' },
+  { id: 3, title: 'Starlight Melody', artist: 'Chillwave', src: '/music/song3.mp3' },
+  { id: 4, title: 'Cotton Candy Sky', artist: 'Synth Dreams', src: '/music/song4.mp3' },
+  { id: 5, title: 'Moonlit Garden', artist: 'Ambient Nights', src: '/music/song5.mp3' },
 ];
 
 const MusicApp = () => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(75);
   const [isMuted, setIsMuted] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Simulate playback progress
-  useEffect(() => {
-    if (isPlaying) {
-      intervalRef.current = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            handleNext();
-            return 0;
-          }
-          return prev + 0.5;
-        });
-      }, 100);
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isPlaying, currentTrack]);
-
+  // ▶️ Play / Pause
   const handlePlayPause = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
     setIsPlaying(!isPlaying);
   };
 
+  // ⏮️ Prev
   const handlePrev = () => {
     setCurrentTrack((prev) => (prev === 0 ? playlist.length - 1 : prev - 1));
     setProgress(0);
   };
 
+  // ⏭️ Next
   const handleNext = () => {
     setCurrentTrack((prev) => (prev === playlist.length - 1 ? 0 : prev + 1));
     setProgress(0);
   };
 
+  // 🎯 Select from playlist
   const handleTrackSelect = (index: number) => {
     setCurrentTrack(index);
     setProgress(0);
     setIsPlaying(true);
   };
 
+  // 🔄 When track changes → load & play
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.src = playlist[currentTrack].src;
+    audio.load();
+
+    if (isPlaying) {
+      audio.play();
+    }
+  }, [currentTrack]);
+
+  // 📊 Progress tracking
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateProgress = () => {
+      if (!audio.duration) return;
+      setProgress((audio.currentTime / audio.duration) * 100);
+    };
+
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('ended', handleNext);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateProgress);
+      audio.removeEventListener('ended', handleNext);
+    };
+  }, []);
+
+  // 🔊 Volume control
+  useEffect(() => {
+    if (!audioRef.current) return;
+    audioRef.current.volume = (isMuted ? 0 : volume) / 100;
+  }, [volume, isMuted]);
+
   return (
     <div className="h-full flex flex-col">
       <h2 className="font-pixel text-xl text-primary mb-4">🎵 Music Player</h2>
-      
+
+      {/* 🎧 Hidden Audio */}
+      <audio ref={audioRef} src={playlist[currentTrack].src} />
+
       {/* Now Playing */}
       <div className="glass-strong rounded-2xl p-4 mb-4">
         <div className="flex items-center gap-4">
-          {/* Album art placeholder */}
+          {/* Album art */}
           <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-kawaii-pink via-kawaii-purple to-kawaii-lavender flex items-center justify-center">
             <Music className="w-8 h-8 text-white" />
           </div>
-          
+
           <div className="flex-1 min-w-0">
             <h3 className="font-medium text-foreground truncate">
               {playlist[currentTrack].title}
@@ -81,10 +109,10 @@ const MusicApp = () => {
             <p className="text-sm text-muted-foreground truncate">
               {playlist[currentTrack].artist}
             </p>
-            
+
             {/* Progress bar */}
             <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-gradient-to-r from-kawaii-pink to-kawaii-purple transition-all duration-100"
                 style={{ width: `${progress}%` }}
               />
@@ -94,29 +122,19 @@ const MusicApp = () => {
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-4 mt-4">
-          <button
-            onClick={handlePrev}
-            className="kawaii-btn p-2 rounded-full bg-muted hover:bg-muted/80"
-          >
-            <SkipBack className="w-5 h-5 text-foreground" />
+          <button onClick={handlePrev} className="kawaii-btn p-2 rounded-full bg-muted">
+            <SkipBack className="w-5 h-5" />
           </button>
-          
+
           <button
             onClick={handlePlayPause}
             className="kawaii-btn p-4 rounded-full bg-primary text-white shadow-lg"
           >
-            {isPlaying ? (
-              <Pause className="w-6 h-6" />
-            ) : (
-              <Play className="w-6 h-6 ml-0.5" />
-            )}
+            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-0.5" />}
           </button>
-          
-          <button
-            onClick={handleNext}
-            className="kawaii-btn p-2 rounded-full bg-muted hover:bg-muted/80"
-          >
-            <SkipForward className="w-5 h-5 text-foreground" />
+
+          <button onClick={handleNext} className="kawaii-btn p-2 rounded-full bg-muted">
+            <SkipForward className="w-5 h-5" />
           </button>
         </div>
 
@@ -128,6 +146,7 @@ const MusicApp = () => {
           >
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
+
           <input
             type="range"
             min="0"
@@ -138,10 +157,10 @@ const MusicApp = () => {
               setIsMuted(false);
             }}
             className="w-24 h-1.5 bg-muted rounded-full appearance-none cursor-pointer
-              [&::-webkit-slider-thumb]:appearance-none 
-              [&::-webkit-slider-thumb]:w-3 
-              [&::-webkit-slider-thumb]:h-3 
-              [&::-webkit-slider-thumb]:rounded-full 
+              [&::-webkit-slider-thumb]:appearance-none
+              [&::-webkit-slider-thumb]:w-3
+              [&::-webkit-slider-thumb]:h-3
+              [&::-webkit-slider-thumb]:rounded-full
               [&::-webkit-slider-thumb]:bg-primary"
           />
         </div>
@@ -158,8 +177,8 @@ const MusicApp = () => {
               className={`
                 w-full flex items-center gap-3 p-2 rounded-lg text-left
                 transition-colors duration-200
-                ${currentTrack === index 
-                  ? 'bg-primary/20 text-primary' 
+                ${currentTrack === index
+                  ? 'bg-primary/20 text-primary'
                   : 'hover:bg-muted/50 text-foreground'
                 }
               `}
@@ -171,7 +190,6 @@ const MusicApp = () => {
                 <p className="text-sm font-medium truncate">{track.title}</p>
                 <p className="text-xs text-muted-foreground truncate">{track.artist}</p>
               </div>
-              <span className="text-xs text-muted-foreground">{track.duration}</span>
             </button>
           ))}
         </div>
