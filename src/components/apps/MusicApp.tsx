@@ -119,7 +119,7 @@ const MusicApp = () => {
 
   return (
     <div className="h-full flex flex-col">
-      <h2 className="font-pixel text-xl text-primary mb-4">🎵 Music Player</h2>
+      <h2 className="font-pixel text-xl text-primary mb-4">Music Player</h2>
 
       {/* 🎧 Hidden Audio */}
       <audio ref={audioRef} src={playlist[currentTrack].src} />
