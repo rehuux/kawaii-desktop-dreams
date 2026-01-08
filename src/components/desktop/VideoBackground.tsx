@@ -59,7 +59,7 @@ const VideoBackground = () => {
       playsInline
       onError={() => setVideoError(true)}
     >
-      <source src="/1000137718.mp4" type="video/mp4" />
+      <source src="/background-video.mp4" type="video/mp4" />
       {/* Fallback triggers error handler */}
     </video>
   );
