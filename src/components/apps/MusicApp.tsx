@@ -25,10 +25,10 @@ const playlist = [
   },
   {
     id: 4,
-    title: 'Cotton Candy Sky',
-    artist: 'Synth Dreams',
+    title: 'back to friends',
+    artist: 'Sombr',
     src: '/music/song4.mp3',
-    cover: 'https://your-image-link-4.jpg'
+    cover: 'https://iili.io/feEjpg2.md.jpg'
   },
   {
     id: 5,
