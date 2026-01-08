@@ -10,12 +10,11 @@ const MusicControl = () => {
   // Toggle play/pause
   const togglePlay = () => {
     if (!audioRef.current) return;
-    
+
     if (isPlaying) {
       audioRef.current.pause();
     } else {
       audioRef.current.play().catch(() => {
-        // Autoplay may be blocked by browser
         console.log('Autoplay blocked - user interaction required');
       });
     }
@@ -29,7 +28,7 @@ const MusicControl = () => {
     setIsMuted(!isMuted);
   };
 
-  // Update playing state when audio ends
+  // Sync state with audio events
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -51,32 +50,34 @@ const MusicControl = () => {
 
   return (
     <>
-      {/* Hidden audio element - replace src with your audio file */}
+      {/* 🎵 Background Music */}
       <audio
         ref={audioRef}
-        src="/background-music.mp3"
+        src="/music/bg-music.mp3"   // ✅ UPDATED PATH
         loop
         preload="auto"
       />
 
       {/* Floating music control button */}
-      <div 
+      <div
         className="fixed top-4 right-4 z-50"
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
-        <div className={`
-          glass rounded-full flex items-center gap-2 
-          transition-all duration-300 ease-out
-          ${isExpanded ? 'px-4 py-2' : 'p-3'}
-        `}>
-          {/* Main play/pause button */}
+        <div
+          className={`
+            glass rounded-full flex items-center gap-2
+            transition-all duration-300 ease-out
+            ${isExpanded ? 'px-4 py-2' : 'p-3'}
+          `}
+        >
+          {/* Play / Pause */}
           <button
             onClick={togglePlay}
             className={`
               p-2 rounded-full transition-all duration-200
-              ${isPlaying 
-                ? 'bg-primary text-primary-foreground' 
+              ${isPlaying
+                ? 'bg-primary text-primary-foreground'
                 : 'bg-primary/20 hover:bg-primary/40 text-primary'
               }
             `}
@@ -103,7 +104,7 @@ const MusicControl = () => {
                   <Volume2 className="w-4 h-4 text-primary" />
                 )}
               </button>
-              
+
               <span className="text-xs text-muted-foreground px-1 flex items-center gap-1">
                 <Music className="w-3 h-3" />
                 {isPlaying ? 'Playing' : 'Paused'}
