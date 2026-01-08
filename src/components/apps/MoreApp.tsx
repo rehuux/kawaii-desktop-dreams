@@ -2,10 +2,10 @@ import { Twitter, Instagram, Github, Youtube, Globe, Heart } from 'lucide-react'
 
 const socialLinks = [
   { icon: Twitter, label: 'Twitter', url: '#', color: 'bg-[#1DA1F2]' },
-  { icon: Instagram, label: 'Instagram', url: '#', color: 'bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737]' },
+  { icon: Instagram, label: 'Instagram', url: 'https://www.instagram.com/rehusticx?', color: 'bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737]' },
   { icon: Github, label: 'GitHub', url: '#', color: 'bg-[#333]' },
   { icon: Youtube, label: 'YouTube', url: '#', color: 'bg-[#FF0000]' },
-  { icon: Globe, label: 'Website', url: '#', color: 'bg-gradient-to-br from-kawaii-pink to-kawaii-purple' },
+  { icon: Globe, label: 'Website', url: 'https://syed.infy.uk/', color: 'bg-gradient-to-br from-kawaii-pink to-kawaii-purple' },
 ];
 
 const MoreApp = () => {
