@@ -27,7 +27,7 @@ const VideoApp = () => {
   return (
     <div className="h-full flex flex-col">
       <h2 className="font-pixel text-xl text-primary mb-4">
-        🎥 Video Player
+         Video Player
       </h2>
 
       {/* Video container */}
