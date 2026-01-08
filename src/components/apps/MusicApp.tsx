@@ -1,12 +1,42 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Music } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX } from 'lucide-react';
 
 const playlist = [
-  { id: 1, title: 'My soul is your', artist: 'Arabic Beats', src: '/music/song1.mp3' },
-  { id: 2, title: 'Cherry Blossom', artist: 'Kawaii Pop', src: '/music/song2.mp3' },
-  { id: 3, title: 'Starlight Melody', artist: 'Chillwave', src: '/music/song3.mp3' },
-  { id: 4, title: 'Cotton Candy Sky', artist: 'Synth Dreams', src: '/music/song4.mp3' },
-  { id: 5, title: 'Moonlit Garden', artist: 'Ambient Nights', src: '/music/song5.mp3' },
+  {
+    id: 1,
+    title: 'My soul is your',
+    artist: 'Arabic Beats',
+    src: '/music/song1.mp3',
+    cover: 'https://rehu.jpg'   // 👈 yaha apna image link
+  },
+  {
+    id: 2,
+    title: 'Cherry Blossom',
+    artist: 'Kawaii Pop',
+    src: '/music/song2.mp3',
+    cover: 'https://your-image-link-2.jpg'
+  },
+  {
+    id: 3,
+    title: 'Starlight Melody',
+    artist: 'Chillwave',
+    src: '/music/song3.mp3',
+    cover: 'https://your-image-link-3.jpg'
+  },
+  {
+    id: 4,
+    title: 'Cotton Candy Sky',
+    artist: 'Synth Dreams',
+    src: '/music/song4.mp3',
+    cover: 'https://your-image-link-4.jpg'
+  },
+  {
+    id: 5,
+    title: 'Moonlit Garden',
+    artist: 'Ambient Nights',
+    src: '/music/song5.mp3',
+    cover: 'https://your-image-link-5.jpg'
+  },
 ];
 
 const MusicApp = () => {
@@ -97,9 +127,18 @@ const MusicApp = () => {
       {/* Now Playing */}
       <div className="glass-strong rounded-2xl p-4 mb-4">
         <div className="flex items-center gap-4">
-          {/* Album art */}
-          <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-kawaii-pink via-kawaii-purple to-kawaii-lavender flex items-center justify-center">
-            <Music className="w-8 h-8 text-white" />
+          
+          {/* 🖼️ Album Art */}
+          <div className="w-20 h-20 rounded-xl overflow-hidden bg-muted">
+            <img
+              src={playlist[currentTrack].cover}
+              alt="Album cover"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src =
+                  'https://via.placeholder.com/150?text=No+Cover';
+              }}
+            />
           </div>
 
           <div className="flex-1 min-w-0">
