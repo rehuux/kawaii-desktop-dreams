@@ -18,10 +18,10 @@ const playlist = [
   },
   {
     id: 3,
-    title: 'Starlight Melody',
-    artist: 'Chillwave',
+    title: 'TV',
+    artist: 'Billie Eilish',
     src: '/music/song3.mp3',
-    cover: 'https://your-image-link-3.jpg'
+    cover: 'https://iili.io/feEYqXt.md.jpg'
   },
   {
     id: 4,
