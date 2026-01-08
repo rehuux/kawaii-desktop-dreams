@@ -3,6 +3,7 @@ import VideoBackground from '@/components/desktop/VideoBackground';
 import Sidebar from '@/components/desktop/Sidebar';
 import Window from '@/components/desktop/Window';
 import Taskbar from '@/components/desktop/Taskbar';
+import StartMenu from '@/components/desktop/StartMenu';
 import MusicControl from '@/components/desktop/MusicControl';
 import PhotosApp from '@/components/apps/PhotosApp';
 import VideoApp from '@/components/apps/VideoApp';
@@ -40,6 +41,7 @@ const Index = () => {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
 
   const openApp = useCallback((appId: string) => {
     setWindows((prev) => {
@@ -166,11 +168,20 @@ const Index = () => {
         </Window>
       ))}
 
+      {/* Start Menu */}
+      <StartMenu
+        isOpen={isStartMenuOpen}
+        onClose={() => setIsStartMenuOpen(false)}
+        onOpenApp={openApp}
+      />
+
       {/* Taskbar */}
       <Taskbar
         minimizedWindows={minimizedWindows}
         onRestore={restoreWindow}
         onMenuClick={() => setIsMobileSidebarOpen(true)}
+        onStartClick={() => setIsStartMenuOpen((prev) => !prev)}
+        isStartMenuOpen={isStartMenuOpen}
       />
     </div>
   );
