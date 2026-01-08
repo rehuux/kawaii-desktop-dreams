@@ -32,10 +32,10 @@ const playlist = [
   },
   {
     id: 5,
-    title: 'Moonlit Garden',
-    artist: 'Ambient Nights',
+    title: 'I Think They Call This Love',
+    artist: 'Matthew Ifield',
     src: '/music/song5.mp3',
-    cover: 'https://your-image-link-5.jpg'
+    cover: 'https://iili.io/feEsynR.md.jpg'
   },
 ];
 
