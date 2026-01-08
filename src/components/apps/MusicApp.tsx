@@ -7,7 +7,7 @@ const playlist = [
     title: 'My soul is your',
     artist: 'Arabic Beats',
     src: '/music/song1.mp3',
-    cover: 'https://rehu.jpg'   // 👈 yaha apna image link
+    cover: 'https://iili.io/fe1Dq3N.md.jpg'   // 👈 yaha apna image link
   },
   {
     id: 2,
