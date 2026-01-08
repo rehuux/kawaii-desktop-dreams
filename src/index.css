@@ -221,6 +221,69 @@
   .bounce-animation {
     animation: cute-bounce 0.5s ease-in-out;
   }
+
+  /* Window bounce-in animation */
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Window minimize animation */
+  @keyframes minimize-out {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.5) translateY(100px);
+    }
+  }
+
+  .animate-minimize-out {
+    animation: minimize-out 0.3s ease-in forwards;
+  }
+
+  /* Wiggle animation for cute effect */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+
+  .animate-wiggle:hover {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  /* Glow pulse for active elements */
+  @keyframes glow-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.5);
+    }
+    50% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  .animate-glow {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
 }
 
 @layer utilities {

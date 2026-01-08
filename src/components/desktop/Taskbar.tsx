@@ -1,4 +1,5 @@
 import { Menu, Sparkles } from 'lucide-react';
+import LiveClock from './LiveClock';
 
 interface MinimizedWindow {
   id: string;
@@ -73,9 +74,9 @@ const Taskbar = ({ minimizedWindows, onRestore, onMenuClick, onStartClick, isSta
           </span>
         )}
 
-        {/* Clock */}
-        <div className="pl-2 border-l border-border/50 text-sm text-muted-foreground font-pixel">
-          {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        {/* Live Clock */}
+        <div className="pl-2 border-l border-border/50 text-sm text-muted-foreground">
+          <LiveClock />
         </div>
       </div>
     </div>
