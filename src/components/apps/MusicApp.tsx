@@ -11,10 +11,10 @@ const playlist = [
   },
   {
     id: 2,
-    title: 'Cherry Blossom',
-    artist: 'Kawaii Pop',
+    title: 'Young & Beautiful',
+    artist: 'Lana del rey',
     src: '/music/song2.mp3',
-    cover: 'https://your-image-link-2.jpg'
+    cover: 'https://iili.io/feEJuON.md.jpg'
   },
   {
     id: 3,
