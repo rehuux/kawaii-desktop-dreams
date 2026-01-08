@@ -5,7 +5,7 @@ const LetterApp = () => {
       
       <div className="flex-1 paper-note rounded-lg p-6 overflow-auto kawaii-scrollbar shadow-inner">
         <div className="max-w-md mx-auto space-y-4 text-foreground leading-relaxed">
-          <p className="text-lg">Dear Visitor,</p>
+          <p className="text-lg">Dear iram,</p>
           
           <p>
             Welcome to my little corner of the internet! ✨
@@ -35,7 +35,7 @@ const LetterApp = () => {
           
           <p className="text-right mt-8">
             With love and sparkles,<br />
-            <span className="font-pixel text-primary">~ Me 🎀</span>
+            <span className="font-pixel text-primary">~ Rehan 🎀</span>
           </p>
         </div>
       </div>
