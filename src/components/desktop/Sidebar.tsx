@@ -40,8 +40,8 @@ const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
       >
         {/* Header */}
         <div className="text-center py-4 mb-2">
-          <h1 className="font-pixel text-2xl text-primary">✨ Kawaii OS ✨</h1>
-          <p className="text-sm text-muted-foreground mt-1">Welcome! 🎀</p>
+          <h1 className="font-pixel text-2xl text-primary">Kawaii OS</h1>
+          <p className="text-sm text-muted-foreground mt-1">Welcome!</p>
         </div>
 
         {/* App buttons */}
