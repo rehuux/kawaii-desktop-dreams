@@ -11,11 +11,11 @@ const socialLinks = [
 const MoreApp = () => {
   return (
     <div className="h-full flex flex-col">
-      <h2 className="font-pixel text-xl text-primary mb-4">➕ More About Me</h2>
+      <h2 className="font-pixel text-xl text-primary mb-4">More About Me</h2>
       
       {/* Social links */}
       <div className="mb-6">
-        <h3 className="font-pixel text-sm text-muted-foreground mb-3">Find me online ✨</h3>
+        <h3 className="font-pixel text-sm text-muted-foreground mb-3">Find me online</h3>
         <div className="flex flex-wrap gap-3">
           {socialLinks.map((link) => (
             <a
@@ -76,7 +76,7 @@ const MoreApp = () => {
         <p className="flex items-center justify-center gap-1">
           Made with <Heart className="w-4 h-4 text-primary fill-primary" /> and lots of sparkles
         </p>
-        <p className="text-xs mt-1">© 2024 Kawaii OS</p>
+        <p className="text-xs mt-1">© Syed Rehan 2024 | Kawaii OS</p>
       </div>
     </div>
   );
