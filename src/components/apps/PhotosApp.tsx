@@ -1,17 +1,17 @@
 import React from "react";
 
 const photos = [
-  { id: 1, src: "/photos/photo1.jpg", rotation: -5, caption: "Memory 1 💕" },
-  { id: 2, src: "/photos/photo2.jpg", rotation: 3, caption: "Memory 2 ✨" },
-  { id: 3, src: "/photos/photo3.jpg", rotation: -2, caption: "Memory 3 🌸" },
-  { id: 4, src: "/photos/photo4.jpg", rotation: 4, caption: "Memory 4 💖" },
-  { id: 5, src: "/photos/photo5.jpg", rotation: -3, caption: "Memory 5 🎀" },
+  { id: 1, src: "/photos/photo1.jpg", rotation: -5, caption: "Oct 2024" },
+  { id: 2, src: "/photos/photo2.jpg", rotation: 3, caption: "Nov 2023" },
+  { id: 3, src: "/photos/photo3.jpg", rotation: -2, caption: "Your eyes 🫠" },
+  { id: 4, src: "/photos/photo4.jpg", rotation: 4, caption: "Eid 2024" },
+  { id: 5, src: "/photos/photo5.jpg", rotation: -3, caption: "Your Smile" },
 ];
 
 const PhotosApp = () => {
   return (
     <div className="h-full">
-      <h2 className="font-pixel text-xl text-primary mb-4">📸 My Photos</h2>
+      <h2 className="font-pixel text-xl text-primary mb-4">Your Photos</h2>
 
       <div className="flex flex-wrap gap-6 justify-center p-4">
         {photos.map((photo) => (
