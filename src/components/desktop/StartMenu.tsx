@@ -15,6 +15,7 @@ const apps = [
   { id: 'game', icon: '🎮', title: 'Memory Game', description: 'Play games' },
   { id: 'gift', icon: '🎁', title: 'Gift', description: 'Surprise!' },
   { id: 'more', icon: '➕', title: 'More', description: 'Additional apps' },
+  { id: 'settings', icon: '⚙️', title: 'Settings', description: 'Customize OS' },
 ];
 
 const StartMenu = ({ isOpen, onClose, onOpenApp }: StartMenuProps) => {

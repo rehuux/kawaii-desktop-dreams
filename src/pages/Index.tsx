@@ -5,6 +5,7 @@ import Window from '@/components/desktop/Window';
 import Taskbar from '@/components/desktop/Taskbar';
 import StartMenu from '@/components/desktop/StartMenu';
 import MusicControl from '@/components/desktop/MusicControl';
+import DesktopWidget from '@/components/desktop/DesktopWidget';
 import PhotosApp from '@/components/apps/PhotosApp';
 import VideoApp from '@/components/apps/VideoApp';
 import LetterApp from '@/components/apps/LetterApp';
@@ -13,6 +14,7 @@ import TerminalApp from '@/components/apps/TerminalApp';
 import GameApp from '@/components/apps/GameApp';
 import GiftApp from '@/components/apps/GiftApp';
 import MoreApp from '@/components/apps/MoreApp';
+import SettingsApp from '@/components/apps/SettingsApp';
 
 interface WindowState {
   id: string;
@@ -35,6 +37,7 @@ const appConfig: Record<string, Omit<WindowState, 'isOpen' | 'isMinimized' | 'is
   game: { id: 'game', title: 'Memory Game', icon: '🎮', defaultPosition: { x: 350, y: 60 }, defaultSize: { width: 450, height: 520 } },
   gift: { id: 'gift', title: 'Gift', icon: '🎁', defaultPosition: { x: 420, y: 100 }, defaultSize: { width: 400, height: 350 } },
   more: { id: 'more', title: 'More', icon: '➕', defaultPosition: { x: 380, y: 80 }, defaultSize: { width: 400, height: 400 } },
+  settings: { id: 'settings', title: 'Settings', icon: '⚙️', defaultPosition: { x: 360, y: 70 }, defaultSize: { width: 420, height: 500 } },
 };
 
 const Index = () => {
@@ -127,6 +130,8 @@ const Index = () => {
         return <GiftApp />;
       case 'more':
         return <MoreApp />;
+      case 'settings':
+        return <SettingsApp />;
       default:
         return null;
     }
@@ -139,6 +144,10 @@ const Index = () => {
 
       {/* Background Music Control */}
       <MusicControl />
+
+      {/* Desktop Widget */}
+      <DesktopWidget />
+
       {/* Sidebar */}
       <Sidebar
         onOpenApp={openApp}
