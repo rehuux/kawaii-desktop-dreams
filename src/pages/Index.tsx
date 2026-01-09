@@ -6,6 +6,11 @@ import Taskbar from '@/components/desktop/Taskbar';
 import StartMenu from '@/components/desktop/StartMenu';
 import MusicControl from '@/components/desktop/MusicControl';
 import DesktopWidget from '@/components/desktop/DesktopWidget';
+import BootScreen from '@/components/desktop/BootScreen';
+import DesktopIcons from '@/components/desktop/DesktopIcons';
+import ContextMenu from '@/components/desktop/ContextMenu';
+import NotificationCenter from '@/components/desktop/NotificationCenter';
+import SystemTray from '@/components/desktop/SystemTray';
 import PhotosApp from '@/components/apps/PhotosApp';
 import VideoApp from '@/components/apps/VideoApp';
 import LetterApp from '@/components/apps/LetterApp';
@@ -41,23 +46,23 @@ const appConfig: Record<string, Omit<WindowState, 'isOpen' | 'isMinimized' | 'is
 };
 
 const Index = () => {
+  const [isBooting, setIsBooting] = useState(true);
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const openApp = useCallback((appId: string) => {
     setWindows((prev) => {
       const existingWindow = prev.find((w) => w.id === appId);
       if (existingWindow) {
-        // If window exists, bring it to front and restore if minimized
         return prev.map((w) =>
           w.id === appId
             ? { ...w, isMinimized: false, zIndex: highestZIndex + 1 }
             : w
         );
       }
-      // Create new window
       const config = appConfig[appId];
       if (!config) return prev;
       return [
@@ -72,6 +77,7 @@ const Index = () => {
       ];
     });
     setHighestZIndex((prev) => prev + 1);
+    setIsStartMenuOpen(false);
   }, [highestZIndex]);
 
   const closeWindow = useCallback((id: string) => {
@@ -108,8 +114,16 @@ const Index = () => {
     setHighestZIndex((prev) => prev + 1);
   }, [highestZIndex]);
 
+  const handleRefresh = useCallback(() => {
+    setRefreshKey((prev) => prev + 1);
+  }, []);
+
   const minimizedWindows = windows
     .filter((w) => w.isMinimized)
+    .map((w) => ({ id: w.id, title: w.title, icon: w.icon }));
+
+  const openWindows = windows
+    .filter((w) => !w.isMinimized)
     .map((w) => ({ id: w.id, title: w.title, icon: w.icon }));
 
   const renderAppContent = (appId: string) => {
@@ -137,16 +151,32 @@ const Index = () => {
     }
   };
 
+  if (isBooting) {
+    return <BootScreen onBootComplete={() => setIsBooting(false)} />;
+  }
+
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen overflow-hidden" key={refreshKey}>
       {/* Video Background */}
       <VideoBackground />
+
+      {/* Context Menu */}
+      <ContextMenu onOpenApp={openApp} onRefresh={handleRefresh} />
+
+      {/* System Tray */}
+      <SystemTray />
+
+      {/* Notification Center */}
+      <NotificationCenter />
 
       {/* Background Music Control */}
       <MusicControl />
 
       {/* Desktop Widget */}
       <DesktopWidget />
+
+      {/* Desktop Icons */}
+      <DesktopIcons onOpenApp={openApp} />
 
       {/* Sidebar */}
       <Sidebar
@@ -187,10 +217,12 @@ const Index = () => {
       {/* Taskbar */}
       <Taskbar
         minimizedWindows={minimizedWindows}
+        openWindows={openWindows}
         onRestore={restoreWindow}
         onMenuClick={() => setIsMobileSidebarOpen(true)}
         onStartClick={() => setIsStartMenuOpen((prev) => !prev)}
         isStartMenuOpen={isStartMenuOpen}
+        onFocusWindow={focusWindow}
       />
     </div>
   );
