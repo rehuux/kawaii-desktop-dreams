@@ -1,4 +1,4 @@
-import { Camera, Video, Mail, Music, Terminal, Gamepad2, Gift, MoreHorizontal, Settings, User, Heart } from 'lucide-react';
+import { Camera, Video, Mail, Music, Terminal, Gamepad2, Gift, MoreHorizontal, Settings, User, Heart, X } from 'lucide-react';
 
 interface SidebarProps {
   onOpenApp: (appId: string) => void;
@@ -20,10 +20,10 @@ const apps = [
 const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
   return (
     <>
-      {/* Mobile overlay */}
+      {/* Overlay */}
       {isMobileOpen && (
         <div 
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
           onClick={onClose}
         />
       )}
@@ -35,11 +35,21 @@ const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
           glass rounded-r-3xl
           flex flex-col
           transition-transform duration-300 ease-out
-          ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+          ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
+        {/* Close Button at Top */}
+        <div className="flex justify-end p-3">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full bg-destructive/20 hover:bg-destructive/40 transition-colors"
+          >
+            <X className="w-5 h-5 text-destructive" />
+          </button>
+        </div>
+
         {/* User Profile Section */}
-        <div className="p-4 border-b border-border/30">
+        <div className="px-4 pb-4 border-b border-border/30">
           <div className="flex items-center gap-3 p-3 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20">
             <div className="relative">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
