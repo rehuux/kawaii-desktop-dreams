@@ -1,4 +1,4 @@
-import { Camera, Video, Mail, Music, Terminal, Gamepad2, Gift, MoreHorizontal, Settings, User, Heart, X } from 'lucide-react';
+import { Camera, Video, Mail, Music, Terminal, Gamepad2, Gift, MoreHorizontal, Settings, X } from 'lucide-react';
 
 interface SidebarProps {
   onOpenApp: (appId: string) => void;
@@ -46,25 +46,6 @@ const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
           >
             <X className="w-5 h-5 text-destructive" />
           </button>
-        </div>
-
-        {/* User Profile Section */}
-        <div className="px-4 pb-4 border-b border-border/30">
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20">
-            <div className="relative">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <User className="w-6 h-6 text-white" />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
-            </div>
-            <div>
-              <h3 className="font-pixel text-sm text-foreground">User</h3>
-              <p className="text-xs text-muted-foreground flex items-center gap-1">
-                <Heart className="w-3 h-3 text-red-400 animate-heartbeat" />
-                Online
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Header */}
