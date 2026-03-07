@@ -150,10 +150,6 @@ const Index = () => {
     }
   };
 
-  if (isBooting) {
-    return <BootScreen onBootComplete={() => setIsBooting(false)} />;
-  }
-
   return (
     <div className="min-h-screen overflow-hidden" key={refreshKey}>
       {/* Video Background */}

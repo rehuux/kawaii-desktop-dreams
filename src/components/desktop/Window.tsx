@@ -97,10 +97,10 @@ const Window = ({
 
   const windowStyle = isMaximized
     ? {
-        left: '280px',
+        left: '0',
         top: '0',
-        width: 'calc(100vw - 280px)',
-        height: '100vh',
+        width: '100vw',
+        height: 'calc(100vh - 60px)',
         zIndex,
       }
     : {
