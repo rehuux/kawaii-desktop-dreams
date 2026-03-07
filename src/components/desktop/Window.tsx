@@ -75,22 +75,32 @@ const Window = ({
     };
   }, [isDragging]);
 
-  // Reset position for new windows on mobile
+  // Auto-adjust for all screen sizes
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      setPosition({ x: 20, y: 80 });
-      setSize({ width: window.innerWidth - 40, height: window.innerHeight - 160 });
-    }
+    const adjustSize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      if (w < 640) {
+        setPosition({ x: 8, y: 8 });
+        setSize({ width: w - 16, height: h - 80 });
+      } else if (w < 1024) {
+        setPosition({ x: 20, y: 20 });
+        setSize({ width: Math.min(defaultSize.width, w - 40), height: Math.min(defaultSize.height, h - 100) });
+      }
+    };
+    adjustSize();
+    window.addEventListener('resize', adjustSize);
+    return () => window.removeEventListener('resize', adjustSize);
   }, []);
 
   if (!isOpen) return null;
 
   const windowStyle = isMaximized
     ? {
-        left: '280px',
+        left: '0',
         top: '0',
-        width: 'calc(100vw - 280px)',
-        height: '100vh',
+        width: '100vw',
+        height: 'calc(100vh - 60px)',
         zIndex,
       }
     : {

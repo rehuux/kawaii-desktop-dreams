@@ -6,7 +6,7 @@ import Taskbar from '@/components/desktop/Taskbar';
 import StartMenu from '@/components/desktop/StartMenu';
 import MusicControl from '@/components/desktop/MusicControl';
 import DesktopWidget from '@/components/desktop/DesktopWidget';
-import BootScreen from '@/components/desktop/BootScreen';
+
 import ContextMenu from '@/components/desktop/ContextMenu';
 import NotificationCenter from '@/components/desktop/NotificationCenter';
 import SystemTray from '@/components/desktop/SystemTray';
@@ -45,7 +45,7 @@ const appConfig: Record<string, Omit<WindowState, 'isOpen' | 'isMinimized' | 'is
 };
 
 const Index = () => {
-  const [isBooting, setIsBooting] = useState(true);
+  
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -149,10 +149,6 @@ const Index = () => {
         return null;
     }
   };
-
-  if (isBooting) {
-    return <BootScreen onBootComplete={() => setIsBooting(false)} />;
-  }
 
   return (
     <div className="min-h-screen overflow-hidden" key={refreshKey}>

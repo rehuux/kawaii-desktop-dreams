@@ -27,7 +27,7 @@ const Taskbar = ({
   onFocusWindow 
 }: TaskbarProps) => {
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:left-[calc(50%+140px)]">
+    <div className="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-50">
       <div className="glass rounded-full px-4 py-2 flex items-center gap-2 animate-slide-up">
         {/* Start Button */}
         <button
