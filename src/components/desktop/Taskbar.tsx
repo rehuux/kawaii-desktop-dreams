@@ -1,4 +1,4 @@
-import { Menu, Sparkles } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import LiveClock from './LiveClock';
 
 interface MinimizedWindow {
@@ -12,8 +12,6 @@ interface TaskbarProps {
   openWindows?: MinimizedWindow[];
   onRestore: (id: string) => void;
   onMenuClick: () => void;
-  onStartClick: () => void;
-  isStartMenuOpen: boolean;
   onFocusWindow?: (id: string) => void;
 }
 
@@ -22,41 +20,21 @@ const Taskbar = ({
   openWindows = [], 
   onRestore, 
   onMenuClick, 
-  onStartClick, 
-  isStartMenuOpen,
   onFocusWindow 
 }: TaskbarProps) => {
   return (
     <div className="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-50">
       <div className="glass rounded-full px-4 py-2 flex items-center gap-2 animate-slide-up">
-        {/* Start Button */}
+        {/* Menu button */}
         <button
-          onClick={onStartClick}
-          className={`
-            p-2 rounded-full transition-all duration-200
-            flex items-center gap-2
-            ${isStartMenuOpen 
-              ? 'bg-primary text-primary-foreground animate-glow' 
-              : 'bg-primary/20 hover:bg-primary/40'
-            }
-          `}
+          onClick={onMenuClick}
+          className="p-2 rounded-full bg-primary/20 hover:bg-primary/40 transition-colors"
         >
-          <Sparkles className={`w-5 h-5 ${isStartMenuOpen ? 'text-primary-foreground animate-spin-slow' : 'text-primary'}`} />
-          <span className={`hidden sm:inline text-sm font-pixel ${isStartMenuOpen ? 'text-primary-foreground' : 'text-primary'}`}>
-            Start
-          </span>
+          <Menu className="w-5 h-5 text-primary" />
         </button>
 
         {/* Separator */}
         <div className="w-px h-6 bg-border/50" />
-
-        {/* Mobile menu button */}
-        <button
-          onClick={onMenuClick}
-          className="md:hidden p-2 rounded-full bg-primary/20 hover:bg-primary/40 transition-colors"
-        >
-          <Menu className="w-5 h-5 text-primary" />
-        </button>
 
         {/* Open (non-minimized) windows */}
         {openWindows.length > 0 && (
@@ -72,7 +50,6 @@ const Taskbar = ({
                   flex items-center gap-2
                   ring-2 ring-primary/50
                 "
-                title={window.title}
               >
                 <span className="text-lg">{window.icon}</span>
                 <span className="hidden lg:inline text-sm font-medium text-foreground max-w-16 truncate">
@@ -97,7 +74,6 @@ const Taskbar = ({
                 flex items-center gap-2
                 opacity-70 hover:opacity-100
               "
-              title={`${window.title} (minimized)`}
             >
               <span className="text-lg grayscale hover:grayscale-0 transition-all">{window.icon}</span>
               <span className="hidden sm:inline text-sm font-medium text-muted-foreground max-w-20 truncate">
