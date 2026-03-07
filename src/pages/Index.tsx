@@ -162,8 +162,6 @@ const Index = () => {
       {/* Notification Center */}
       <NotificationCenter />
 
-      {/* Background Music Control */}
-      <MusicControl />
 
       {/* Desktop Widget */}
       <DesktopWidget />
