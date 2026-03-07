@@ -3,7 +3,7 @@ import VideoBackground from '@/components/desktop/VideoBackground';
 import Sidebar from '@/components/desktop/Sidebar';
 import Window from '@/components/desktop/Window';
 import Taskbar from '@/components/desktop/Taskbar';
-import StartMenu from '@/components/desktop/StartMenu';
+
 import MusicControl from '@/components/desktop/MusicControl';
 import DesktopWidget from '@/components/desktop/DesktopWidget';
 
