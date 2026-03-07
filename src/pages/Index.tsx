@@ -199,21 +199,12 @@ const Index = () => {
         </Window>
       ))}
 
-      {/* Start Menu */}
-      <StartMenu
-        isOpen={isStartMenuOpen}
-        onClose={() => setIsStartMenuOpen(false)}
-        onOpenApp={openApp}
-      />
-
       {/* Taskbar */}
       <Taskbar
         minimizedWindows={minimizedWindows}
         openWindows={openWindows}
         onRestore={restoreWindow}
         onMenuClick={() => setIsMobileSidebarOpen(true)}
-        onStartClick={() => setIsStartMenuOpen((prev) => !prev)}
-        isStartMenuOpen={isStartMenuOpen}
         onFocusWindow={focusWindow}
       />
     </div>
