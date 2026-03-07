@@ -75,7 +75,7 @@ const StartMenu = ({ isOpen, onClose, onOpenApp }: StartMenuProps) => {
           {/* Footer */}
           <div className="mt-4 pt-3 border-t border-border/50 text-center">
             <span className="text-xs text-muted-foreground font-pixel">
-              ✨ Made with love ✨
+               Made with love 
             </span>
           </div>
         </div>
