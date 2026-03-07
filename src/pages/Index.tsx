@@ -6,7 +6,7 @@ import Taskbar from '@/components/desktop/Taskbar';
 import StartMenu from '@/components/desktop/StartMenu';
 import MusicControl from '@/components/desktop/MusicControl';
 import DesktopWidget from '@/components/desktop/DesktopWidget';
-import BootScreen from '@/components/desktop/BootScreen';
+
 import ContextMenu from '@/components/desktop/ContextMenu';
 import NotificationCenter from '@/components/desktop/NotificationCenter';
 import SystemTray from '@/components/desktop/SystemTray';
