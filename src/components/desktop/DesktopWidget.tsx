@@ -48,7 +48,7 @@ const DesktopWidget = () => {
   const IconComponent = greeting.icon;
 
   return (
-    <div className="fixed top-4 right-4 z-40 hidden md:block animate-fade-in">
+    <div className="fixed top-14 right-4 z-30 hidden md:block animate-fade-in">
       <div className="glass rounded-2xl p-4 w-64">
         {/* Greeting */}
         <div className="flex items-center gap-2 mb-3">
