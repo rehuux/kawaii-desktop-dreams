@@ -4,7 +4,6 @@ import Sidebar from '@/components/desktop/Sidebar';
 import Window from '@/components/desktop/Window';
 import Taskbar from '@/components/desktop/Taskbar';
 
-import MusicControl from '@/components/desktop/MusicControl';
 import DesktopWidget from '@/components/desktop/DesktopWidget';
 
 import ContextMenu from '@/components/desktop/ContextMenu';
