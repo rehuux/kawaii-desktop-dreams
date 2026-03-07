@@ -76,7 +76,7 @@ const Index = () => {
       ];
     });
     setHighestZIndex((prev) => prev + 1);
-    setIsStartMenuOpen(false);
+    
   }, [highestZIndex]);
 
   const closeWindow = useCallback((id: string) => {
