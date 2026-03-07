@@ -83,7 +83,7 @@ const Taskbar = ({
           ))
         ) : openWindows.length === 0 ? (
           <span className="text-sm text-muted-foreground px-2 hidden sm:inline">
-            ✨ No apps running
+             No apps running
           </span>
         ) : null}
 
