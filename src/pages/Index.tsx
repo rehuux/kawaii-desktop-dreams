@@ -45,7 +45,7 @@ const appConfig: Record<string, Omit<WindowState, 'isOpen' | 'isMinimized' | 'is
 };
 
 const Index = () => {
-  const [isBooting, setIsBooting] = useState(true);
+  
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
