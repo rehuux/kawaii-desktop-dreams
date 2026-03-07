@@ -31,35 +31,30 @@ const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
       {/* Sidebar */}
       <aside
         className={`
-          fixed left-0 top-0 h-full w-64 md:w-72 z-50
+          sidebar-panel fixed left-0 top-0 h-full w-56 sm:w-64 z-50
           glass rounded-r-3xl
           flex flex-col
           transition-transform duration-300 ease-out
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
-        {/* Close Button at Top */}
-        <div className="flex justify-end p-3">
+        {/* Close Button + Header */}
+        <div className="flex items-center justify-between px-3 py-2 sidebar-header">
+          <div className="flex items-center gap-1.5">
+            <span className="text-lg animate-float">🌸</span>
+            <h1 className="font-pixel text-base sm:text-lg text-primary">Kawaii OS</h1>
+            <span className="text-lg animate-float delay-200">✨</span>
+          </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-destructive/20 hover:bg-destructive/40 transition-colors"
+            className="p-1.5 rounded-full bg-destructive/20 hover:bg-destructive/40 transition-colors"
           >
-            <X className="w-5 h-5 text-destructive" />
+            <X className="w-4 h-4 text-destructive" />
           </button>
         </div>
 
-        {/* Header */}
-        <div className="text-center py-4 px-4">
-          <div className="flex items-center justify-center gap-2 mb-1">
-            <span className="text-2xl animate-float">🌸</span>
-            <h1 className="font-pixel text-2xl text-primary">Kawaii OS</h1>
-            <span className="text-2xl animate-float delay-200">✨</span>
-          </div>
-          <p className="text-xs text-muted-foreground">Your cute digital world</p>
-        </div>
-
         {/* App buttons */}
-        <nav className="flex-1 flex flex-col gap-1.5 overflow-y-auto kawaii-scrollbar px-3 py-2">
+        <nav className="flex-1 flex flex-col gap-0.5 overflow-y-auto kawaii-scrollbar px-2 py-1">
           {apps.map((app, index) => (
             <button
               key={app.id}
@@ -69,26 +64,25 @@ const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
               }}
               className="
                 kawaii-btn glass-strong
-                flex items-center gap-3 px-4 py-3
-                rounded-xl text-left
+                flex items-center gap-2 px-3 py-2 sidebar-app-btn
+                rounded-lg text-left
                 hover:bg-primary/20
                 group relative overflow-hidden
+                shrink-0
               "
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              {/* Gradient background on hover */}
               <div className={`absolute inset-0 bg-gradient-to-r ${app.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
-              
-              <span className="text-2xl group-hover:scale-110 transition-transform duration-200 relative z-10">
+              <span className="text-lg group-hover:scale-110 transition-transform duration-200 relative z-10">
                 {app.emoji}
               </span>
-              <span className="font-medium text-foreground relative z-10 flex-1">{app.label}</span>
-              <app.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors relative z-10" />
+              <span className="font-medium text-sm text-foreground relative z-10 flex-1">{app.label}</span>
+              <app.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors relative z-10" />
             </button>
           ))}
 
-          {/* Settings button - separated */}
-          <div className="mt-2 pt-2 border-t border-border/30">
+          {/* Settings */}
+          <div className="mt-1 pt-1 border-t border-border/30 shrink-0">
             <button
               onClick={() => {
                 onOpenApp('settings');
@@ -96,35 +90,22 @@ const Sidebar = ({ onOpenApp, isMobileOpen, onClose }: SidebarProps) => {
               }}
               className="
                 kawaii-btn glass-strong
-                flex items-center gap-3 px-4 py-3 w-full
-                rounded-xl text-left
+                flex items-center gap-2 px-3 py-2 sidebar-app-btn w-full
+                rounded-lg text-left
                 hover:bg-primary/20
                 group
               "
             >
-              <span className="text-2xl group-hover:animate-spin-slow">⚙️</span>
-              <span className="font-medium text-foreground flex-1">Settings</span>
-              <Settings className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              <span className="text-lg group-hover:animate-spin-slow">⚙️</span>
+              <span className="font-medium text-sm text-foreground flex-1">Settings</span>
+              <Settings className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
             </button>
           </div>
         </nav>
 
-        {/* Footer */}
-        <div className="p-4 border-t border-border/30">
-          <div className="text-center">
-            <p className="text-xs text-muted-foreground mb-2">Made with 💖</p>
-            <div className="flex justify-center gap-1">
-              {['🌸', '💜', '✨', '💝', '🎀'].map((emoji, i) => (
-                <span 
-                  key={i} 
-                  className="text-sm animate-float"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                >
-                  {emoji}
-                </span>
-              ))}
-            </div>
-          </div>
+        {/* Footer - hidden in landscape short screens */}
+        <div className="p-2 border-t border-border/30 sidebar-footer">
+          <p className="text-center text-xs text-muted-foreground">Made with 💖</p>
         </div>
       </aside>
     </>

@@ -401,7 +401,7 @@
 @layer utilities {
   /* Custom scrollbar for kawaii theme */
   .kawaii-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   .kawaii-scrollbar::-webkit-scrollbar-track {
@@ -442,5 +442,38 @@
 
   .animate-slide-up {
     animation: slide-up 0.4s ease-out;
+  }
+}
+
+/* Landscape & short-screen responsive adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .sidebar-header {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .sidebar-app-btn {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 0.8rem;
+  }
+
+  .sidebar-app-btn span.text-lg {
+    font-size: 0.95rem;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .sidebar-panel h1 {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-height: 400px) {
+  .sidebar-app-btn {
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 }
