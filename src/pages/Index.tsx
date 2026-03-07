@@ -50,7 +50,6 @@ const Index = () => {
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(true);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [refreshKey, setRefreshKey] = useState(0);
 
   const openApp = useCallback((appId: string) => {
     setWindows((prev) => {
